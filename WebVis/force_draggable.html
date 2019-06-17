@@ -12,9 +12,9 @@
 		<script type="text/javascript">
 
 			//Width and height
-			var w = 1000;
-			var h = 500;
-			var radius = 6;
+			var w = 1500;
+			var h = 1000;
+			var radius = 3;
 
 			//Original data
 			d3.json("line.json",  function populate(dataset) {
@@ -48,7 +48,16 @@
 				.append("circle")
 				.attr("r", 5)
 				.style("fill", function(d, i) {
-					return colors(i);
+					console.log(i);
+					if(i<= 19){
+						return colors(0);
+					}
+					if(i>499) {
+						return colors(6);
+					} else {
+						return colors(3);
+					}
+
 				})
 				.call(d3.drag()  //Define what to do on drag events
 					.on("start", dragStarted)
